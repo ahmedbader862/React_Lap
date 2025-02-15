@@ -1,0 +1,28 @@
+.home {
+  padding: 20px;
+  text-align: center;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+#search{
+  position: relative;
+  left: 50%;
+}
+#pagenation{
+  position: absolute;
+  left: 40%;
+}
+#nav{
+display: block;
+}
