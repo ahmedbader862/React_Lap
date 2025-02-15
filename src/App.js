@@ -1,43 +1,27 @@
-import './App.css';
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Errors from './pages/Error';
-import Home from './pages/Home';
-import Navbar from './pages/Navbar';
-import Showmovie from './pages/Showmovie';
-import Fav from './pages/Fav';
-import SignIn from './lab2/SignInPage';
-import SignUp from './lab2/SignUpPage';
-import { useState } from 'react';
-import { langContexte } from './Context/Lang';
-
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Navbar from "./pages/Navbar";
+import "bulma/css/bulma.min.css";
+import SignUp from "./pages/SignUpPage";
+import Errors from "./pages/Error";
+import SignIn from "./pages/SignInPage";
+import NewHome from "./pages/NewHome";
 
 function App() {
-  
-  const [langContext, setLangContext] = useState("en");
-
-
   return (
-<div >  
-<langContexte.Provider value={{ langContext, setLangContext }}>
 
-  <instance/>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        
+        <Route path="/" element={<NewHome/>}  />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/signIn" element={<SignIn />}  />
+        <Route path="*" element={<Errors />}  />
 
-  <BrowserRouter>
-      <Navbar/>
-        <Switch>
-            <Route path={"/"} component={Home} exact /> 
-            <Route path={"/Fav"} component={Fav} exact /> 
-            <Route path={"/showmovie/:id"} component={Showmovie} exact /> 
-            <Route path={"/signin"} component={SignIn} exact /> 
-            <Route path={"/signup"} component={SignUp} exact /> 
-            <Route path={"*"} component={Errors} exact /> 
+      </Routes>
+    </BrowserRouter>
 
-            {/* <Route path={"*"} component={NotFound} /> */}
-
-        </Switch>
-      </BrowserRouter>
-        </langContexte.Provider> 
-    </div>
   );
 }
 

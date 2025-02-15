@@ -1,12 +1,12 @@
-import { createStore } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
-// import changeThemeReducer from "./reduscer/Themreducer";
-import ADD_MOVIES from "./reduscer/Favreducer";
+import {  configureStore } from '@reduxjs/toolkit'
+import langeSlice from './toolkit'
+// import { movieSlice } from './thunk'
+// import { thunk } from 'redux-thunk'
 
-
-const myStore = createStore(
-    ADD_MOVIES,
-    composeWithDevTools() 
-);
-
-export default myStore;
+export const store = configureStore({
+  reducer: { 
+    movies: langeSlice,
+    // allMovies : movieSlice
+ }, 
+//  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
+})

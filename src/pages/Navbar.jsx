@@ -1,96 +1,59 @@
 import { Link } from "react-router-dom";
-    import {  useSelector } from "react-redux";
-// import { changeTheme } from "../redux/actions/ThemAction";
-import "./Home.css"; 
-import { useContext } from "react";
-import { langContexte } from "../Context/Lang";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { changeEn } from "../Redux/toolkit";
 
 function Navbar() {
+  const navigate = useNavigate();
 
-    const { langContext, setLangContext } = useContext(langContexte);
+  const goSignUn = () => {
+    navigate("/signup");
+  };
 
-    
-    // (((((((((((((((((((((((())))))))))))))))))))))))
+  const goSigngIn = () => {
+    navigate("/signIn");
+  };
 
-    // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const curentLange = useSelector((state) => state.movies.lange);
+  const text = useSelector((state) => state.movies[curentLange]);
 
-    // const theme = useSelector((state) => state.theme);
+  const en = () => {
+    console.log(curentLange);
+    dispatch(changeEn(curentLange === "en" ? "ar" : "en"));
+  };
 
-                                                                      // THunk
-    const moviesLength = useSelector((state) => state.allMovie.length);   
-
-    // const HandleTheme = () => {
-    //     dispatch(changeTheme(theme === "light" ? "dark" : "light"));
-    // };
- 
-    
-   
-
-    return (
-
-<>
-        <nav id="nav" className="navbar navbar-expand-lg bg-body-danger  bg-info">
-
-            <div className="container-fluid">
-                
-                <Link className="navbar-brand" to="/">React App</Link>
-
-                <button
-                    className="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-
-
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0  w-100 d-flex justify-content-center">
-
-                        <li className="nav-item col-3 ">
-                            <Link className={`nav-link active`} aria-current="page" to="/">Home</Link>
-                        </li>
-                                                                           {/* {%%%%%%%%  error Thunk %%%%%%%%% } */}
-                        <li className="nav-item col-3 ">
-                            <Link className="nav-link active" to="/Fav">Favurite  {moviesLength}</Link>
-                           
-                        </li>
-                     
-                        
-                    </ul>
-                    
-                    <div className="d-flex justify-content-evenly w-100 ">
-
-
-                        <button className="nav-item btn" style={{fontWeight:"700"}} >
-                            <Link className="nav-link" to="/signup">Sing Up</Link>
-                        </button>
-
-                        <button className="nav-item btn" style={{fontWeight:"700"}} >
-                            <Link className="nav-link" to="/signin">Log In</Link>
-                        </button>                                                                  
-                                                                                                              {/* ((((((Context)))))) */}
-
-                        {/* <button className="btn btn-primary" onClick={HandleTheme}>Change {theme}</button> */}
-              
-                        <button className="btn" style={{fontWeight:"700"}} onClick={() => setLangContext(langContext === "en" ? "ar" : "en")}> 
-                                {langContext} 
-                            </button>
-                        
-
-                    </div>
-
-                </div>
+  return (
+    <>
+      <nav className="navbar" role="navigation" aria-label="main navigation">
+        <div id="navbarBasicExample" className="navbar-menu">
+          <div className="navbar-start">
+            <Link to="/" className="navbar-item">{text.home}</Link>
+            <Link to="/documentation" className="navbar-item">{text.favorite}</Link>
+            <div className="navbar-item has-dropdown is-hoverable">
+              <Link className="navbar-link">{text.more}</Link>
+              <div className="navbar-dropdown is-disabled">
+                <Link className="navbar-item" onClick={() => console.log("555")}>{text.trending}</Link>
+                <Link className="navbar-item is-selected" to="/signin">{text.mostViewed}</Link>
+                <Link className="navbar-item">{text.popular}</Link>
+              </div>
             </div>
-        </nav>
-        </>  
-
-);
+          </div>
+          <div className="navbar-end">
+            <div className="navbar-item">
+              <div className="buttons">
+                <button className="button" onClick={en}>{curentLange}</button>
+                <button className="button is-primary" onClick={goSignUn}>
+                  <strong>{text.signUp}</strong>
+                </button>
+                <button className="button is-light" onClick={goSigngIn}>{text.signIn}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </>
+  );
 }
 
 export default Navbar;

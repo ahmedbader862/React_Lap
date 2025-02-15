@@ -20,8 +20,8 @@
   left: 50%;
 }
 #pagenation{
-  position: absolute;
-  left: 40%;
+  position: relative;
+  bottom: 10px;
 }
 #nav{
 display: block;

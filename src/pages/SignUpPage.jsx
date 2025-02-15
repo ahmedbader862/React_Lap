@@ -62,6 +62,7 @@ function SignUp() {
                     !e.target.value.match(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/) && "Weak Password" && e.target.value !== userUpData.confPassword && "Password Not Matched"
             });
         }
+        
         if (e.target.name === 'confPassword') {
             setUserUpData({
                 ...userUpData,
@@ -86,7 +87,7 @@ function SignUp() {
                 <div className="mb-3 text-start">
                     <label htmlFor="inputName" className="form-label fw-bold fs-5">Name</label>
                     <input id="inputName" required type="text"
-                        className={`form-control ${errorsMsgUp.nameError == null ? "form-control" : errorsMsgUp.nameError ? "is-invalid" : "is-valid"}`}
+                        className={`input is-link ${errorsMsgUp.nameError == null ? "input is-link" : errorsMsgUp.nameError ? "is-invalid" : "is-valid"}`}
                         value={userUpData.name}
                         name="name"
                         onChange={(e) => handleData(e)} />
@@ -95,7 +96,7 @@ function SignUp() {
                 <div className="mb-3 text-start">
                     <label htmlFor="inputEmail" className="form-label fw-bold fs-5">Email Address</label>
                     <input id="inputEmail" required type="email"
-                        className={`form-control ${errorsMsgUp.emailError == null ? "form-control" : errorsMsgUp.emailError ? "is-invalid" : "is-valid"}`}
+                        className={`input is-link ${errorsMsgUp.emailError == null ? "input is-link" : errorsMsgUp.emailError ? "is-invalid" : "is-valid"}`}
                         value={userUpData.email}
                         name="email"
                         onChange={(e) => handleData(e)} />
@@ -104,7 +105,7 @@ function SignUp() {
                 <div className="mb-3 text-start">
                     <label htmlFor="userName" className="form-label fw-bold fs-5">User Name</label>
                     <input id="userName" required type="text"
-                        className={`form-control ${errorsMsgUp.usrNameError == null ? "form-control" : errorsMsgUp.usrNameError ? "is-invalid" : "is-valid"}`}
+                        className={`input is-link ${errorsMsgUp.usrNameError == null ? "input is-link" : errorsMsgUp.usrNameError ? "is-invalid" : "is-valid"}`}
                         value={userUpData.usrName}
                         name="usrName"
                         onChange={(e) => handleData(e)} />
@@ -113,7 +114,7 @@ function SignUp() {
                 <div className="mb-3 text-start">
                     <label htmlFor="inputPassword" className="form-label fw-bold fs-5">Password</label>
                     <input id="inputPassword" required type="password"
-                        className={`form-control ${errorsMsgUp.passwordError == null ? "form-control" : errorsMsgUp.passwordError ? "is-invalid" : "is-valid"}`}
+                        className={`input is-link ${errorsMsgUp.passwordError == null ? "input is-link" : errorsMsgUp.passwordError ? "is-invalid" : "is-valid"}`}
                         value={userUpData.password}
                         name="password"
                         onChange={(e) => handleData(e)} />
@@ -122,13 +123,13 @@ function SignUp() {
                 <div className="mb-3 text-start">
                     <label htmlFor="inputPasswordConf" className="form-label fw-bold fs-5">Confirm Password</label>
                     <input id="inputPasswordConf" required type="password"
-                        className={`form-control ${errorsMsgUp.confPasswordError == null ? "form-control" : errorsMsgUp.confPasswordError ? "is-invalid" : "is-valid"}`}
+                        className={`input is-link ${errorsMsgUp.confPasswordError == null ? "input is-link" : errorsMsgUp.confPasswordError ? "is-invalid" : "is-valid"}`}
                         value={userUpData.confPassword}
                         name="confPassword"
                         onChange={(e) => handleData(e)} />
                     <p className="form-text">{errorsMsgUp.confPasswordError}</p>
                 </div>
-                <button type="submit" className="btn btn-primary mt-5 w-25">Register</button>
+                <button type="submit" className="button is-success mt-5 w-25">Register</button>
             </form>
         </section>
     );

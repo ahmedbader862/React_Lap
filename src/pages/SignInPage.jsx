@@ -45,7 +45,7 @@ function SignIn() {
                 <div className="mb-3 text-start">
                     <label htmlFor="inputEmail" className="form-label fw-bold fs-5">Email Address</label>
                     <input id="inputEmail" required type="email"
-                        className={`form-control ${errorsMsgIn.emailError == null ? "form-control" : errorsMsgIn.emailError ? "is-invalid" : "is-valid"}`}
+                        className={`input is-link ${errorsMsgIn.emailError == null ? "input is-link" : errorsMsgIn.emailError ? "is-invalid" : "is-valid"}`}
                         value={userInData.email}
                         name="email"
                         onChange={(e) => handleData(e)} />
@@ -54,13 +54,13 @@ function SignIn() {
                 <div className="text-start">
                     <label htmlFor="inputPassword" className="form-label fw-bold fs-5">Password</label>
                     <input id="inputPassword" required type="password"
-                        className={`form-control ${errorsMsgIn.passwordError == null ? "form-control" : errorsMsgIn.passwordError ? "is-invalid" : "is-valid"}`}
+                        className={`input is-link ${errorsMsgIn.passwordError == null ? "input is-link" : errorsMsgIn.passwordError ? "is-invalid" : "is-valid"}`}
                         value={userInData.password}
                         name="password"
                         onChange={(e) => handleData(e)} />
                     <p className="form-text text-danger">{errorsMsgIn.passwordError}</p>
                 </div>
-                <button type="submit" className="btn btn-primary mt-5 w-25">Login</button>
+                <button type="submit" className="button is-success mt-5 w-25">Login</button>
             </form>
         </section>
     );
